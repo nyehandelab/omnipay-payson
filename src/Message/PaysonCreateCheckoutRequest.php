@@ -7,7 +7,7 @@ use Omnipay\Common\ItemBag;
 /**
  * Payson Checkout Authorize Request
  */
-class PaysonCreateCheckoutRequest extends AbstractCheckoutOrderRequest
+class PaysonCreateCheckoutRequest extends AbstractCheckoutRequest
 {
     public function getData()
     {
@@ -94,56 +94,6 @@ class PaysonCreateCheckoutRequest extends AbstractCheckoutOrderRequest
     public function getCurrency()
     {
         return $this->getParameter('currency');
-    }
-
-    public function setCheckoutUri($value)
-    {
-        return $this->setParameter('checkoutUri', $value);
-    }
-
-    public function getCheckoutUri()
-    {
-        return $this->getParameter('checkoutUri');
-    }
-
-    public function setConfirmationUri($value)
-    {
-        return $this->setParameter('confirmationUri', $value);
-    }
-
-    public function getConfirmationUri()
-    {
-        return $this->getParameter('confirmationUri');
-    }
-
-    public function setNotificationUri($value)
-    {
-        return $this->setParameter('notificationUri', $value);
-    }
-
-    public function getNotificationUri()
-    {
-        return $this->getParameter('notificationUri');
-    }
-
-    public function setTermsUri($value)
-    {
-        return $this->setParameter('termsUri', $value);
-    }
-
-    public function getTermsUri()
-    {
-        return $this->getParameter('termsUri');
-    }
-
-    public function setValidationUri($value)
-    {
-        return $this->setParameter('validationUri', $value);
-    }
-
-    public function getValidationUri()
-    {
-        return $this->getParameter('validationUri');
     }
 
     public function setIntegrationInfo($value)

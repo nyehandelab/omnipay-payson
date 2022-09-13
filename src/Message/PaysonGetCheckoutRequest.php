@@ -5,7 +5,7 @@ namespace Nyehandel\Omnipay\Payson\Message;
 /**
  * Payson Checkout Authorize Request
  */
-class PaysonGetOrderRequest extends AbstractCheckoutRequest
+class PaysonGetCheckoutRequest extends AbstractCheckoutRequest
 {
     public function getData()
     {
@@ -27,7 +27,7 @@ class PaysonGetOrderRequest extends AbstractCheckoutRequest
             $this->getHeaders(),
         );
 
-        return new PaysonGetOrderResponse(
+        return new PaysonGetCheckoutResponse(
             $this,
             $this->getResponseBody($httpResponse),
             $httpResponse->getStatusCode()

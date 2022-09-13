@@ -5,7 +5,7 @@ namespace Nyehandel\Omnipay\Payson\Message;
 
 use Omnipay\Common\Message\RedirectResponseInterface;
 
-final class PaysonUpdateOrderResponse extends Response implements RedirectResponseInterface
+final class PaysonUpdateCheckoutResponse extends Response implements RedirectResponseInterface
 {
 
     /**
