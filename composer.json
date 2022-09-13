@@ -1,0 +1,41 @@
+{
+    "name": "nyehandel/omnipay-payson",
+    "type": "library",
+    "description": "Payson Checkout gateway for Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "payson",
+        "purchase"
+    ],
+    "homepage": "https://github.com/nyehandelab/omnipay-payson",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Andersson",
+            "email": "david@nyehandel.se"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Nyehandel\\Omnipay\\Payson\\" : "src/"
+        }
+    },
+    "require": {
+        "omnipay/common": "^3"
+    },
+    "require-dev": {
+        "omnipay/tests": "^3",
+        "squizlabs/php_codesniffer": "^3",
+        "phpro/grumphp": "^0.14"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.0.x-dev"
+        }
+    },
+    "prefer-stable": true
+}
