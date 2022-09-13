@@ -125,4 +125,9 @@ class PaysonItem extends Item
     {
         return $this->setParameter('uri', $value);
     }
+
+    public function getVatPercent()
+    {
+        return $this->getTaxRate() * 100;
+    }
 }

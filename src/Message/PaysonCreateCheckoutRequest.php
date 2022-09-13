@@ -66,6 +66,16 @@ class PaysonCreateCheckoutRequest extends AbstractCheckoutOrderRequest
         return $this->getParameter('countryCode');
     }
 
+    public function setCountries($value)
+    {
+        return $this->setParameter('countries', $value);
+    }
+
+    public function getCountries()
+    {
+        return $this->getParameter('countries');
+    }
+
     public function setLocale($value)
     {
         return $this->setParameter('locale', $value);
