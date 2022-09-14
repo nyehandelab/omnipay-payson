@@ -8,6 +8,7 @@ namespace Nyehandel\Omnipay\Payson\Message;
 use Nyehandel\Omnipay\Payson\Traits\GeneralGatewayParameters;
 use Omnipay\Common\ItemBag;
 use Nyehandel\Omnipay\Payson\PaysonItemBag;
+use Nyehandel\Omnipay\Payson\PaysonCustomer;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -136,4 +137,71 @@ abstract class AbstractCheckoutRequest extends AbstractRequest
 
         return $this->setParameter('items', $items);
     }
+
+    public function setCountries($value)
+    {
+        return $this->setParameter('countries', $value);
+    }
+
+    public function getCountries()
+    {
+        return $this->getParameter('countries');
+    }
+
+    public function setLocale($value)
+    {
+        return $this->setParameter('locale', $value);
+    }
+
+    public function getLocale()
+    {
+        return $this->getParameter('locale');
+    }
+
+    /**
+     * A list of items in this order
+     *
+     * @return ItemBag|null A bag containing items in this order
+     */
+    public function getCustomer()
+    {
+        return $this->getParameter('customer');
+    }
+
+    /**
+     * Set the items in this order
+     *
+     * @param ItemBag|array $items An array of items in this order
+     * @return $this
+     */
+    public function setCustomer($customer)
+    {
+        $customer = new PaysonCustomer($customer);
+
+        return $this->setParameter('customer', $customer);
+    }
+
+    protected function getCustomerData()
+    {
+        $customer = $this->getCustomer();
+
+        if (!$customer) return [];
+
+        $customerData = [
+            'city' => $customer->getCity(),
+            'countryCode' => $customer->getCountryCode(),
+            'identityNumber' => $customer->getIdentityNumber(),
+            'email' => $customer->getEmail(),
+            'firstName' => $customer->getFirstName(),
+            'lastName' => $customer->getLastName(),
+            'phone' => $customer->getPhone(),
+            'postalCode' => $customer->getPostalCode(),
+            'street' => $customer->getStreet(),
+            'type' => $customer->getType(), // Can be ‘person’ or ‘business’.
+        ];
+
+        return $customerData;
+    }
+
+
 }

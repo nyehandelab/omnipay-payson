@@ -23,9 +23,14 @@ class PaysonUpdateCheckoutRequest extends AbstractCheckoutRequest
                 'termsUri' => $this->getTermsUri(),
                 'validationUri' => $this->getValidationUri(),
             ],
+            'customer' => $this->getCustomerData(),
             'order' => [
                 'currency' => $this->getCurrency(),
                 'items' => $this->getItemsData(),
+            ],
+            'gui' => [
+                'locale' => $this->getLocale(), // Language of the checkout snippet. Can be ‘sv’, ‘en’, ‘fi’, ‘no’, ‘da’, ‘es’ or ‘de’.
+                'countries' => $this->getCountries(), // List of countries a customer can choose in the checkout snippet. Case sensitive, e.g use: [“SE”, “GB”, “DK”]
             ],
         ];
 

@@ -2,8 +2,6 @@
 
 namespace Nyehandel\Omnipay\Payson\Message;
 
-use Omnipay\Common\ItemBag;
-
 /**
  * Payson Checkout Authorize Request
  */
@@ -30,18 +28,7 @@ class PaysonCreateCheckoutRequest extends AbstractCheckoutRequest
                 'integrationInfo' => $this->getIntegrationInfo(),
                 'partnerId' => $this->getPartnerId(),
             ],
-            'customer' => [
-                'city' => '',
-                'countryCode' => $this->getCountryCode(),
-                'identityNumber' => '',
-                'email' => '',
-                'firstName' => '',
-                'lastName' => '',
-                'phone' => '',
-                'postalCode' => '',
-                'street' => '',
-                'type' => '', // Can be ‘person’ or ‘business’.
-            ],
+            'customer' => $this->getCustomerData(),
             'order' => [
                 'currency' => $this->getCurrency(), // Can be ‘sek’ or ‘eur’.
                 'items' => $this->getItemsData(),
@@ -49,41 +36,11 @@ class PaysonCreateCheckoutRequest extends AbstractCheckoutRequest
             'gui' => [
                 'locale' => $this->getLocale(), // Language of the checkout snippet. Can be ‘sv’, ‘en’, ‘fi’, ‘no’, ‘da’, ‘es’ or ‘de’.
                 'countries' => $this->getCountries(), // List of countries a customer can choose in the checkout snippet. Case sensitive, e.g use: [“SE”, “GB”, “DK”]
-                //'verification' => $this->getLocale(), // Used to enable BankID verification. Can be ‘none’ or ‘bankid’. Default ‘none’
+                //'verification' => $this->getVerification(), // Used to enable BankID verification. Can be ‘none’ or ‘bankid’. Default ‘none’
             ],
         ];
 
         return $data;
-    }
-
-    public function setCountryCode($value)
-    {
-        return $this->setParameter('countryCode', $value);
-    }
-
-    public function getCountryCode()
-    {
-        return $this->getParameter('countryCode');
-    }
-
-    public function setCountries($value)
-    {
-        return $this->setParameter('countries', $value);
-    }
-
-    public function getCountries()
-    {
-        return $this->getParameter('countries');
-    }
-
-    public function setLocale($value)
-    {
-        return $this->setParameter('locale', $value);
-    }
-
-    public function getLocale()
-    {
-        return $this->getParameter('locale');
     }
 
     public function setCurrency($value)
