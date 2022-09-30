@@ -19,6 +19,7 @@ class PaysonCreateCheckoutRequest extends AbstractCheckoutRequest
         );
 
         $data = [
+            'expirationTime' => $this->getExpirationTime(),
             'merchant' => [
                 'checkoutUri' => $this->getCheckoutUri(),
                 'confirmationUri' => $this->getConfirmationUri(),
@@ -41,6 +42,17 @@ class PaysonCreateCheckoutRequest extends AbstractCheckoutRequest
         ];
 
         return $data;
+    }
+
+
+    public function setExpirationTime($value)
+    {
+        return $this->setParameter('expirationTime', $value);
+    }
+
+    public function getExpirationTime()
+    {
+        return $this->getParameter('expirationTime');
     }
 
     public function setCurrency($value)
