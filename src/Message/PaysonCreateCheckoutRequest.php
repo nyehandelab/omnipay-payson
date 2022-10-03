@@ -37,6 +37,8 @@ class PaysonCreateCheckoutRequest extends AbstractCheckoutRequest
             'gui' => [
                 'locale' => $this->getLocale(), // Language of the checkout snippet. Can be ‘sv’, ‘en’, ‘fi’, ‘no’, ‘da’, ‘es’ or ‘de’.
                 'countries' => $this->getCountries(), // List of countries a customer can choose in the checkout snippet. Case sensitive, e.g use: [“SE”, “GB”, “DK”]
+                'phoneOptional' => $this->getPhoneOptional() ?? false,
+                'requestPhone' => $this->getRequestPhone() ?? false,
                 //'verification' => $this->getVerification(), // Used to enable BankID verification. Can be ‘none’ or ‘bankid’. Default ‘none’
             ],
         ];
@@ -85,6 +87,25 @@ class PaysonCreateCheckoutRequest extends AbstractCheckoutRequest
         return $this->getParameter('partnerId');
     }
 
+    public function setPhoneOptional($value)
+    {
+        return $this->setParameter('phoneOptional', $value);
+    }
+
+    public function getPhoneOptional()
+    {
+        return $this->getParameter('phoneOptional');
+    }
+
+    public function setRequestPhone($value)
+    {
+        return $this->setParameter('requestPhone', $value);
+    }
+
+    public function getRequestPhone()
+    {
+        return $this->getParameter('requestPhone');
+    }
 
     public function getEndpoint()
     {
