@@ -87,26 +87,6 @@ class PaysonCreateCheckoutRequest extends AbstractCheckoutRequest
         return $this->getParameter('partnerId');
     }
 
-    public function setPhoneOptional($value)
-    {
-        return $this->setParameter('phoneOptional', $value);
-    }
-
-    public function getPhoneOptional()
-    {
-        return $this->getParameter('phoneOptional');
-    }
-
-    public function setRequestPhone($value)
-    {
-        return $this->setParameter('requestPhone', $value);
-    }
-
-    public function getRequestPhone()
-    {
-        return $this->getParameter('requestPhone');
-    }
-
     public function getEndpoint()
     {
         return parent::getEndpoint() . '/checkouts';
